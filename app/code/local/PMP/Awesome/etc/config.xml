@@ -9,11 +9,10 @@
         <blocks>
             <awesome>
                 <rewrite>
-                    <awesome>PMP_Awesome_Block_Awesome</awesome>
+                    <awesome>Pmp_Awesome_Block_Awesome</awesome>
                 </rewrite>
             </awesome>
         </blocks>
-
     </global>
     <frontend>
         <routers>
