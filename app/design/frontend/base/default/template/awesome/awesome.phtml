@@ -3,29 +3,28 @@ $_viewData = Mage::getSingleton('core/session')->getViewdata();
 $_helper = $this->helper('catalog/output');
 $_sortUrl = Mage::getBaseUrl() . $this->_nameInLayout . '?sort=' . ($this->getRequest()->getParam('sort') == 'DESC' ? 'ASC' : 'DESC');
 $_sortText = $this->getRequest()->getParam('sort') == 'DESC' ? 'descending' : 'ascending';
-
 ?>
 <h3>
     <a href="<?php echo $_sortUrl ?>">
-    <?php echo $this->__('Viewing collection sorted ' . $_sortText.' by weirdness rating (position)') ?></a>
+        <?php echo $this->__('Viewing collection sorted ' . $_sortText . ' by weirdness rating (position)') ?></a>
 </h3>
-<p class="note-msg">Products courtesy of <a target="_blank" href="http://consequenceofsound.net/2013/07/the-25-weirdest-pieces-of-band-merchandise/">'The 25 Weirdest Pieces of Band Merchandise'</a></p>
+<p class="note-msg">Products courtesy of <a target="_blank"
+                                            href="http://consequenceofsound.net/2013/07/the-25-weirdest-pieces-of-band-merchandise/">'The
+        25 Weirdest Pieces of Band Merchandise'</a></p>
 <div class="category-products">
     <ol class="products-list" id="products-list">
         <?php
         foreach ($_viewData['productCollection'] as $_product):
-            #var_dump($_product->getData());
             ?>
             <?php $_iterator = 0; ?>
             <li class="item<?php if (++$_iterator == sizeof($_viewData['productCollection'])): ?> last<?php endif; ?>">
-                <?php // Product Image ?>
                 <a href="<?php echo $_product->getProductUrl() ?>"
                    title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>"
                    class="product-image" style="width:300px"><img
                         src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')
-                        ->resize(300); ?>"
+                            ->resize(300); ?>"
                         alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>"/></a>
-                <?php // Product description ?>
+
                 <div class="product-shop">
                     <div class="f-fix">
                         <?php $_productNameStripped = $this->stripTags($_product->getName(), null, true); ?>
@@ -36,7 +35,8 @@ $_sortText = $this->getRequest()->getParam('sort') == 'DESC' ? 'descending' : 'a
                             <?php echo $this->getReviewsSummaryHtml($_product) ?>
                         <?php endif; ?>
 
-                        <small style="color:#3399cc">Weirdness rating: <?php echo $_product->getPos(); ?></small><br>
+                        <small style="color:#3399cc">Weirdness rating: <?php echo $_product->getPos(); ?></small>
+                        <br>
                         <?php echo Mage::helper('core')->currency($_product->getPrice(), true, false); ?>
                         <?php if ($_product->isSaleable()): ?>
                             <p>
@@ -57,21 +57,9 @@ $_sortText = $this->getRequest()->getParam('sort') == 'DESC' ? 'descending' : 'a
                                title="<?php echo $_productNameStripped ?>"
                                class="link-learn"><?php echo $this->__('Learn More') ?></a>
                         </div>
-                        <!-- <ul class="add-to-links">
-                            <?php /*if ($this->helper('wishlist')->isAllow()) : */ ?>
-                                <li><a href="<?php /*echo $this->helper('wishlist')->getAddUrl($_product) */ ?>"
-                                       class="link-wishlist"><?php /*echo $this->__('Add to Wishlist') */ ?></a></li>
-                            <?php /*endif; */ ?>
-                            <?php /*if ($_compareUrl = $this->getAddToCompareUrl($_product)): */ ?>
-                                <li><span class="separator">|</span> <a href="<?php /*echo $_compareUrl */ ?>"
-                                                                        class="link-compare"><?php /*echo $this->__('Add to Compare') */ ?></a>
-                                </li>
-                            <?php /*endif; */ ?>
-                        </ul>-->
                     </div>
                 </div>
             </li>
         <?php endforeach; ?>
     </ol>
-    <script type="text/javascript">decorateList('products-list', 'none-recursive')</script>
 </div>
