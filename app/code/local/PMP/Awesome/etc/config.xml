@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<config>
+    <global>
+        <modules>
+            <pmp_awesome>
+                <version>0.1.0</version>
+            </pmp_awesome>
+        </modules>
+        <blocks>
+            <awesome>
+                <rewrite>
+                    <awesome>PMP_Awesome_Block_Awesome</awesome>
+                </rewrite>
+            </awesome>
+        </blocks>
+
+    </global>
+    <frontend>
+        <routers>
+            <awesome>
+                <use>standard</use>
+                <args>
+                    <module>PMP_Awesome</module>
+                    <frontName>awesome</frontName>
+                </args>
+            </awesome>
+        </routers>
+        <layout>
+            <updates>
+                <awesome>
+                    <file>awesome.xml</file>
+                </awesome>
+            </updates>
+        </layout>
+    </frontend>
+</config>
