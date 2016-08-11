@@ -8,11 +8,8 @@ class PMP_Awesome_IndexController extends Mage_Core_Controller_Front_Action
         $viewData['sort'] = $this->getRequest()->getParam('sort') == 'DESC' ? 'DESC' : 'ASC';
         $viewData['productCollection'] = Mage::getModel('catalog/product')
             ->getCollection()
-  #          ->setOrder('id',  $viewData['sort'])
-   #         ->addAttributeToSort('id', $viewData['sort'])
-            ->addAttributeToSort('id', 'descending')
+            ->addAttributeToSort('pos', $viewData['sort'])
             ->addAttributeToSelect('*')
-            ->addUrlRewrite()
             ->load();
         $viewData['productCollection'] = $viewData['productCollection']->getItems();
         Mage::getSingleton('core/session')->setViewdata($viewData);
