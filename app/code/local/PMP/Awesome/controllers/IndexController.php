@@ -38,9 +38,11 @@ class PMP_Awesome_IndexController extends Mage_Core_Controller_Front_Action
             ->getCollection()
             ->addAttributeToSort('pos', $viewData['sort'])
             ->addAttributeToSelect('*')
-            ->load();
-        $viewData['productCollection'] = $viewData['productCollection']->getItems();
+            ->load()
+            ->getItems();
+
         Mage::getSingleton('core/session')->setViewdata($viewData);
         $this->renderLayout();
     }
+
 }
