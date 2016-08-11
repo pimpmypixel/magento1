@@ -35,7 +35,9 @@ $_sortText = $this->getRequest()->getParam('sort') == 'DESC' ? 'descending' : 'a
                             <?php echo $this->getReviewsSummaryHtml($_product) ?>
                         <?php endif; ?>
 
+                        <?php if ($_product->getPos()): ?>
                         <small style="color:#3399cc">Weirdness rating: <?php echo $_product->getPos(); ?></small>
+                        <?php endif; ?>
                         <br>
                         <?php echo Mage::helper('core')->currency($_product->getPrice(), true, false); ?>
                         <?php if ($_product->isSaleable()): ?>
